@@ -14,8 +14,16 @@ const createUser = (req, res = response) => {
     })
 }
 
+const renewToken = (req, res = response)=>{
+res.json({
+    ok:true,
+    msg:'renew token'
+})
+}
+
 
 module.exports = {
     loginUser,
     createUser,
+    renewToken,
 }
