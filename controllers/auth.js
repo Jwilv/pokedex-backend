@@ -8,7 +8,10 @@ res.json({
 }
 
 const createUser = (req, res = response) => {
-
+    res.json({
+        ok:true,
+        msg:'user create'
+    })
 }
 
 

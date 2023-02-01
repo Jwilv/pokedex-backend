@@ -5,7 +5,7 @@
 const {Router} = require('express');
 const router = Router();
 const {check} = require('express-validator')
-const {loginUser} = require('../controllers/auth')
+const {loginUser,createUser} = require('../controllers/auth')
 
 router.post('/login',[
 check('password','la password debe ser de minimo 6 caracteres').isLength({min:6}),
@@ -18,7 +18,7 @@ router.post('/register',[
     check('email','debe ser un email').isEmail(),
     check('password','la password debe ser de minimo 6 caracteres').isLength({min:6})
     
-    ],);
+    ],createUser);
 
 router.get('/renew')
 
