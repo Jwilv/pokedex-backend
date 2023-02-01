@@ -19,4 +19,6 @@ router.post('/register',[
     
     ],);
 
-router.get('/renew',)
+router.get('/renew')
+
+module.exports = router;
