@@ -29,9 +29,12 @@ const createUser = async(req, res = response) => {
 
         await user.save()
 
+        const token = await generateJwt(user.id, user.name)
+
         return res.status(201).json({
             ok:true,
-            user
+            user,
+            token
         })
 
 
