@@ -7,7 +7,7 @@ const validateJwt = (req, res = response, next)=>{
 const token = req.header('x-token')
 //si no hay tira error
 if(!token){
-    res.status(401).json({
+    return res.status(401).json({
         ok:false,
         msg:'no hay token en la peticion'
     })
@@ -24,7 +24,7 @@ try {
     req.uid = uid;
     req.name = name;
 } catch (error) {
-    return res.status().json({
+    return res.status(400).json({
         ok:false,
         msg:'token no valido'
     })

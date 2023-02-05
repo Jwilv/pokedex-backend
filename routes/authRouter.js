@@ -6,7 +6,8 @@ const {Router} = require('express');
 const router = Router();
 const {check} = require('express-validator')
 const { loginUser, createUser, renewToken } = require('../controllers/auth')
-const {validateFields} = require('../middlewares/validate-fields')
+const {validateFields} = require('../middlewares/validate-fields');
+const { validateJwt } = require('../middlewares/validate-jwt');
 
 router.post('/login',[
 check('password','la password debe ser de minimo 6 caracteres').isLength({min:6}),
@@ -21,6 +22,6 @@ router.post('/register',[
     validateFields
     ],createUser);
 
-router.get('/renew',renewToken)
+router.get('/renew',validateJwt,renewToken)
 
 module.exports = router;
