@@ -48,10 +48,14 @@ const createUser = async(req, res = response) => {
     }
 }
 
-const renewToken = (req, res = response) => {
-    res.json({
+const renewToken = async(req, res = response) => {
+    const {uid,name} = req.body;
+    const token = await generateJwt(uid,name);
+    res.status(201).json({
         ok: true,
-        msg: 'renew token'
+        name,
+        uid,
+        token,
     })
 }
 
